@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Threading;
@@ -35,39 +35,28 @@ public class TouchMovement : MonoBehaviour
     {
       rb.velocity = new Vector3 (0,0,speed * Time.deltaTime);
        
-        // if (transform.position != moveToo)
-           // transform.position = Vector3.Lerp(transform.position, moveToo, sideSpeed * Time.deltaTime);
        if(isMouseDown) //  move the player with the finger 
         {
 
             rb.velocity =new Vector3 ((Input.mousePosition.x - Screen.width / 2) / Screen.width * 2 * 10, 0, speed * Time.deltaTime);
 
-          /*  if (onGround && Input.mousePosition.y > Screen.height / 2)
-            {
-                rb.velocity = new Vector3(0, jump, speed);
-                onGround = false;
-
-            }
-          */      
+          
         } 
-       /*
-        if (!onGround)
-            rb.velocity = new Vector3(0, -10, speed);
-        print(onGround);
-      */
+    
     }
-    private void OnTriggerEnter(Collider other) // enable jump
+    private void OnTriggerEnter(Collider other) // enable jump and Copleted stage
     {
         if (other.tag == "Ground") 
             onGround = true;
         if (other.tag == "LevelComplete")
-            onGround = true;
+            SceneManager.LoadScene("LevelComplete");
     }
     void GetMouseDown()
     {
         if (Input.GetMouseButtonDown(0))
             isMouseDown = true;
-  
+        if (Input.GetMouseButtonUp(0))
+            isMouseDown = false;
     }
     public void changeSpeed(int number)
     {
