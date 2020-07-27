@@ -67,8 +67,7 @@ public class TouchMovement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
             isMouseDown = true;
-        if (Input.GetMouseButtonUp(0))
-            SceneManager.LoadScene("LevelComplete");
+  
     }
     public void changeSpeed(int number)
     {
